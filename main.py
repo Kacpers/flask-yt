@@ -3,14 +3,14 @@
 
 # Restart przy zmianie
 # flask --app main --debug run
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return "Hello World"
+    return render_template('index.html')
 
-@app.route('/hello/<name>', methods=["POST"])
+@app.route('/hello/<name>', methods=["GET"])
 def say_hello(name):
-    return f"Hello {name}!"
+    return render_template('say_hello.html', name=name)
